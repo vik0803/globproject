@@ -2,27 +2,27 @@
 
 namespace GlobProject\Http\Controllers;
 
-use GlobProject\Repositories\ClientRepository;
-use GlobProject\Services\ClientService;
+use GlobProject\Repositories\ProjectRepository;
+use GlobProject\Services\ProjectService;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class ProjectController extends Controller
 {
 
     /**
-     * @var ClientRepository
+     * @var ProjectRepository
      */
     private $repository;
     /**
-     * @var ClientService
+     * @var ProjectService
      */
     private $service;
 
     /**
-     * @param ClientRepository $repository
-     * @param ClientService $service
+     * @param ProjectRepository $repository
+     * @param ProjectService $service
      */
-    public function __construct(ClientRepository $repository, ClientService $service) {
+    public function __construct(ProjectRepository $repository, ProjectService $service) {
         $this->repository = $repository;
         $this->service = $service;
     }
