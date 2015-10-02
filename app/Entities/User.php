@@ -1,6 +1,6 @@
 <?php
 
-namespace GlobProject;
+namespace GlobProject\Entities;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

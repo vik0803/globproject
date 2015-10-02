@@ -137,13 +137,19 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
+        ///
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+
         /*
-         * Application Service Providers...
-         */
+                 * Application Service Providers...
+                 */
         GlobProject\Providers\AppServiceProvider::class,
         GlobProject\Providers\AuthServiceProvider::class,
         GlobProject\Providers\EventServiceProvider::class,
         GlobProject\Providers\RouteServiceProvider::class,
+        GlobProject\Providers\GlobProjectRepositoryProvider::class,
+
 
     ],
 

@@ -2,12 +2,31 @@
 
 namespace GlobProject\Http\Controllers;
 
+use GlobProject\Repositories\ClientRepository;
+use GlobProject\Services\ClientService;
 use Illuminate\Http\Request;
-use GlobProject\Http\Requests;
-use GlobProject\Http\Controllers\Controller;
 
 class ClientController extends Controller
 {
+
+    /**
+     * @var ClientRepository
+     */
+    private $repository;
+    /**
+     * @var ClientService
+     */
+    private $service;
+
+    /**
+     * @param ClientRepository $repository
+     * @param ClientService $service
+     */
+    public function __construct(ClientRepository $repository, ClientService $service) {
+        $this->repository = $repository;
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +34,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return \GlobProject\Client::all();
+        return $this->repository->all();
     }
 
 
@@ -27,7 +46,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        return \GlobProject\Client::create($request->all());
+        return $this->service->create($request->all());
     }
 
     /**
@@ -38,7 +57,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        return \GlobProject\Client::find($id);
+        return $this->repository->find($id);
     }
 
     /**
@@ -72,7 +91,7 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        if ($client = \GlobProject\Client::find($id)) {
+        if ($client = $this->repository->find($id)) {
             $client->delete();
         }
     }
