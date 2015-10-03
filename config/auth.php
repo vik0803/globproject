@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => GlobProject\User::class,
+    'model' => \GlobProject\Entities\User::class,
 
     /*
     |--------------------------------------------------------------------------

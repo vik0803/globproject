@@ -1,6 +1,4 @@
-<?php
-
-namespace GlobProject\Repositories;
+<?php namespace GlobProject\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -29,5 +27,36 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    /**
+     * @param $projectId
+     * @param $userId
+     * @return bool
+     */
+    public function isOwner($projectId, $userId)
+    {
+        if (count($this->findWhere(['id' => $projectId, 'owner_id' => $userId]))>0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param $projectId
+     * @param $memberId
+     * @return bool
+     */
+    public function hasMember($projectId, $memberId)
+    {
+        $project = $this->find($projectId);
+
+        foreach($project->members as $member) {
+            if ($member->id == $memberId) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
