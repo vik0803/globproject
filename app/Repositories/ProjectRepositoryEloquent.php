@@ -3,6 +3,7 @@
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use GlobProject\Repositories\ProjectRepository;
+use GlobProject\Presenters\ProjectPresenter;
 use GlobProject\Entities\Project;
 
 /**
@@ -58,5 +59,13 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
         }
 
         return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function presenter()
+    {
+        return ProjectPresenter::class;
     }
 }
