@@ -20,7 +20,7 @@ Route::post('oauth/access_token', function() {
 });
 
 
-Route::group(['middleware' => 'oauth'], function(){
+Route::group(['middleware' => 'guest'], function(){
 
 
     // Client
