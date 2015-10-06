@@ -12,7 +12,9 @@ class ProjectTransformer extends TransformerAbstract
      * @var array
      */
     protected $defaultIncludes = [
-        'members'
+        'members',
+        'owner',
+        'client'
     ];
 
     public function transform(Project $project)
@@ -34,4 +36,13 @@ class ProjectTransformer extends TransformerAbstract
         return $this->collection($project->members, new ProjectMemberTransformer());
     }
 
+    public function includeOwner(Project $project)
+    {
+        return $this->item($project->owner, new ProjectOwnerTransformer());
+    }
+
+    public function includeClient(Project $project)
+    {
+        return $this->item($project->client, new ProjectClientTransformer());
+    }
 }

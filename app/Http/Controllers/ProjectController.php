@@ -36,7 +36,7 @@ class ProjectController extends Controller
     public function index()
     {
         $userId = \Authorizer::getResourceOwnerId();
-        return $this->repository->with('client', 'user')->findWhere(['owner_id' => $userId]);
+        return $this->repository->findWhere(['owner_id' => $userId]);
     }
 
 

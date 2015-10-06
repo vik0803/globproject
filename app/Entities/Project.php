@@ -22,12 +22,12 @@ class Project extends Model implements Transformable
 
     public function owner()
     {
-        $this->belongsTo(User::class, 'owner_id', 'id');
+        return $this->hasOne(User::class, 'id', 'owner_id');
     }
 
     public function client()
     {
-        $this->belongsTo(Client::class, 'client_id', 'id');
+        return $this->hasOne(Client::class, 'id', 'client_id');
     }
 
     public function notes() {
