@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,7 +62,7 @@
 		</div>
 	</nav>
 
-	@yield('content')
+	<div ng-view></div>
 
 	<!-- Scripts -->
 	@if(Config::get('app.debug'))
@@ -72,8 +72,16 @@
 		<script src="{{ asset('build/js/vendor/angular-resource.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/angular-animate.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/angular-messages.min.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/vendor/angular-cookies.min.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/vendor/angular-oauth2.min.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/vendor/query-string.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/ui-bootstrap.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/navbar.min.js') }}" charset="utf-8"></script>
+
+		<script src="{{ asset('build/js/app.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/login.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/home.js') }}" charset="utf-8"></script>
+
 	@else
 		<script src="{{ elixir('js/all.js') }}" charset="utf-8"></script>
 	@endif
