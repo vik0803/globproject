@@ -30,6 +30,13 @@ class Project extends Model implements Transformable
         return $this->hasOne(Client::class, 'id', 'client_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tasks() {
+        return $this->hasMany(ProjectTasks::class);
+    }
+
     public function notes() {
         return $this->hasMany(ProjectNote::class);
     }

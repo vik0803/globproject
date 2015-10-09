@@ -54,6 +54,14 @@ $factory->define(GlobProject\Entities\ProjectNote::class, function (Faker\Genera
 });
 
 
+$factory->define(GlobProject\Entities\ProjectMember::class, function (Faker\Generator $faker) {
+    return [
+        'project_id' => rand(1, 10),
+        'member_id' => rand(1, 10),
+    ];
+});
+
+
 
 
 $factory->define(GlobProject\Entities\ProjectTasks::class, function (Faker\Generator $faker) {

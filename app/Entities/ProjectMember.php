@@ -11,8 +11,12 @@ class ProjectMember extends Model implements Transformable
     use TransformableTrait;
 
     protected $fillable = [
-        'owner_id',
+        'member_id',
         'project_id'
     ];
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 }
