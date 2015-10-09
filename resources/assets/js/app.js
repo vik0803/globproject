@@ -14,9 +14,10 @@ app.config(['$routeProvider', 'OAuthProvider', function($routeProvider, OAuthPro
         });
 
     OAuthProvider.configure({
-        baseUrl: 'https://localhost:8000',
+        baseUrl: 'http://localhost:8000/',
         clientId: 'appid',
-        clientSecret: 'secret' // optional
+        clientSecret: 'secret',
+        grantPath: '/oauth/access_token',
     });
 
 }]);

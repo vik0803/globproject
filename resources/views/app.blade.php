@@ -72,9 +72,9 @@
 		<script src="{{ asset('build/js/vendor/angular-resource.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/angular-animate.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/angular-messages.min.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/vendor/query-string.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/angular-cookies.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/angular-oauth2.min.js') }}" charset="utf-8"></script>
-		<script src="{{ asset('build/js/vendor/query-string.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/ui-bootstrap.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/navbar.min.js') }}" charset="utf-8"></script>
 
