@@ -78,9 +78,17 @@
 		<script src="{{ asset('build/js/vendor/ui-bootstrap.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/navbar.min.js') }}" charset="utf-8"></script>
 
+
 		<script src="{{ asset('build/js/app.js') }}" charset="utf-8"></script>
+
+		<!--Controllers -->
 		<script src="{{ asset('build/js/controllers/login.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/controllers/home.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/client/clientList.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/client/clientNew.js') }}" charset="utf-8"></script>
+
+		<!--Services -->
+		<script src="{{ asset('build/js/services/client.js') }}" charset="utf-8"></script>
 
 	@else
 		<script src="{{ elixir('js/all.js') }}" charset="utf-8"></script>
