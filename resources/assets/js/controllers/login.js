@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-    .controller('LoginController', ['$scope', function($scope){
+    .controller('LoginController', ['$scope', '$location', 'OAuth', function($scope, $location, OAuth){
         $scope.user = {
             username: '',
             password: ''
@@ -7,5 +7,12 @@ angular.module('app.controllers')
 
         $scope.login = function (){
 
+            console.log($scope.user);
+
+            OAuth.getAccessToken($scope.user).then(function(){
+                $location.path('home');
+            }, function(){
+                alert('Login errado....');
+            });
         };
     }]);

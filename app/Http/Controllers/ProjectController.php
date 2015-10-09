@@ -109,12 +109,20 @@ class ProjectController extends Controller
         return $this->repository->isOwner($projectId, $userId);
     }
 
+    /**
+     * @param $projectId
+     * @return mixed
+     */
     private function checkProjecMember($projectId)
     {
         $userId = \Authorizer::getResourceOwnerId();
         return $this->repository->hasMember($projectId, $userId);
     }
 
+    /**
+     * @param $projectId
+     * @return bool
+     */
     private function checkProjectPermissions($projectId)
     {
         if ($this->checkProjectOwner($projectId) or $this->checkProjecMember($projectId)) {

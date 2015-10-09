@@ -78,9 +78,9 @@ class ProjectService
         }
     }
 
-    public function addMember()
+    public function addMember($projectId, $userID)
     {
-
+        return $this->repository->find();
     }
 
     public function removeMember()
