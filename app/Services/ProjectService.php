@@ -78,6 +78,21 @@ class ProjectService
         }
     }
 
+    public function addMember()
+    {
+
+    }
+
+    public function removeMember()
+    {
+
+    }
+
+    public function isMember()
+    {
+
+    }
+
     /**
      * @param array $data
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException

@@ -52,3 +52,16 @@ $factory->define(GlobProject\Entities\ProjectNote::class, function (Faker\Genera
         'content' => $faker->paragraph,
     ];
 });
+
+
+
+
+$factory->define(GlobProject\Entities\ProjectTasks::class, function (Faker\Generator $faker) {
+    return [
+        'project_id' => rand(1, 10),
+        'name' => $faker->word,
+        'start_date' => $faker->dateTime('now'),
+        'due_date' => $faker->dateTime('now'),
+        'status' => rand(1,3),
+    ];
+});
