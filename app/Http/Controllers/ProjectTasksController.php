@@ -37,9 +37,10 @@ class ProjectTasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $userId = \Authorizer::getResourceOwnerId();
+        return $this->repository->findWhere(['owner_id' => $userId, 'project_id' => $id]);
     }
 
     /**

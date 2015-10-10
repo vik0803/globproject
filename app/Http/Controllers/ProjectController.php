@@ -39,6 +39,17 @@ class ProjectController extends Controller
         return $this->repository->findWhere(['owner_id' => $userId]);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function members($id)
+    {
+        if ($this->checkProjectPermissions($id) == false) {
+            return ['error' => 'Access Forbidden'];
+        }
+        return $this->repository->skipPresenter()->find($id)->members;
+    }
 
     /**
      * Store a newly created resource in storage.
