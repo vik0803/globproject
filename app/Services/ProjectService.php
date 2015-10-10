@@ -1,6 +1,7 @@
 <?php namespace GlobProject\Services;
 
 
+use GlobProject\Entities\ProjectMember;
 use GlobProject\Repositories\ProjectRepository;
 use GlobProject\Validators\ProjectValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
@@ -78,19 +79,55 @@ class ProjectService
         }
     }
 
+    /**
+     * @param $projectId
+     * @param $userID
+     * @return mixed
+     */
     public function addMember($projectId, $userID)
     {
-        return $this->repository->find();
+        if (!$this->isMember($projectId, $userID)) {
+            $member = ProjectMember::create([
+                'project_id' => $projectId,
+                'member_id' => $userID,
+            ]);
+            return $member;
+        }
+        return false;
     }
 
-    public function removeMember()
+    /**
+     * @param $projectId
+     * @param $userID
+     * @return mixed
+     */
+    public function removeMember($projectId, $userID)
     {
-
+        if (!$this->isMember($projectId, $userID)) {
+            $member = ProjectMember::where('project_id', $projectId)->where('member_id', $userID);
+            return $member->delete();
+        }
+        return false;
     }
 
-    public function isMember()
+    /**
+     * Verify that the user is member.
+     *
+     * @param $projectId
+     * @param $memberId
+     * @return bool
+     */
+    public function isMember($projectId, $memberId)
     {
+        $project = $this->repository->find($projectId);
 
+        foreach($project->members as $member) {
+            if ($member->id == $memberId) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
