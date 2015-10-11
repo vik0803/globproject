@@ -43,6 +43,22 @@ config.vendorPathCss = [
 
 // Config das Path CSS
 config.buildPathHtml = config.buildPath + '/views';
+config.buildPathFont = config.buildPath + '/fonts';
+config.buildPathImage = config.buildPath + '/images';
+
+gulp.task('copy-font', function(){
+    // Copiar os Fonts
+    gulp.src(config.assetsPath + '/fonts/**/*')
+        .pipe(gulp.dest(config.buildPathFont))
+        .pipe(liveReload());
+});
+
+gulp.task('copy-image', function(){
+    // Copiar os Images
+    gulp.src(config.assetsPath + '/images/**/*')
+        .pipe(gulp.dest(config.buildPathImage))
+        .pipe(liveReload());
+});
 
 gulp.task('copy-html', function(){
     // Copiar os html
@@ -83,8 +99,9 @@ gulp.task('clear-build-folder', function(){
 
 gulp.task('default', ['clear-build-folder'], function(){
 
-    // Copiar os htmls
-    gulp.start('copy-html');
+    // Copiar os Arquivos
+    gulp.start('copy-styles', 'copy-scripts', 'copy-html', 'copy-font', 'copy-image');
+
 
     // Mini / Version
     elixir(function(mix){
@@ -104,12 +121,14 @@ gulp.task('watch-dev', ['clear-build-folder'], function(){
 
     liveReload.listen();
 
-    gulp.start('copy-styles', 'copy-scripts', 'copy-html');
+    gulp.start('copy-styles', 'copy-scripts', 'copy-html', 'copy-font', 'copy-image');
 
     gulp.watch(config.assetsPath + '/**', [
         'copy-styles',
         'copy-scripts',
-        'copy-html'
+        'copy-html',
+        'copy-font',
+        'copy-image'
     ]);
 
 
