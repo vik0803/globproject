@@ -34,8 +34,10 @@ class ProjectNoteController extends Controller
      */
     public function index($id)
     {
+        $userId = \Authorizer::getResourceOwnerId();
         return $this->repository->findWhere([
-            'project_id' => $id
+            'project_id' => $id,
+            'owner_id' => $userId
         ]);
     }
 
@@ -65,16 +67,6 @@ class ProjectNoteController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

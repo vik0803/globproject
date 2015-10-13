@@ -31,16 +31,27 @@ Route::group(['middleware' => 'oauth'], function(){
 
     // Project Note
     Route::group(['prefix' => 'project'], function(){
+
+        // Notes
         Route::get('{id}/note', 'ProjectNoteController@index');
         Route::post('{id}/note', 'ProjectNoteController@store');
         Route::get('{id}/note/{noteId}', 'ProjectNoteController@show');
         Route::put('{id}/note/{noteId}', 'ProjectNoteController@update');
         Route::delete('{id}/note/{noteId}', 'ProjectNoteController@destroy');
 
+        // Files
         Route::post('{id}/file', 'ProjectFileController@store');
 
-
+        // Members
         Route::get('{id}/members', 'ProjectController@members');
+
+
+        // Tasks
+        Route::get('{id}/task', 'ProjectTasksController@index');
+        Route::post('{id}/task', 'ProjectTasksController@store');
+        Route::get('{id}/task/{noteId}', 'ProjectTasksController@show');
+        Route::put('{id}/task/{noteId}', 'ProjectTasksController@update');
+        Route::delete('{id}/task/{noteId}', 'ProjectTasksController@destroy');
     });
 
 });
