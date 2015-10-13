@@ -91,8 +91,16 @@
 		<script src="{{ asset('build/js/controllers/client/clientEdit.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/controllers/client/clientRemove.js') }}" charset="utf-8"></script>
 
+		<script src="{{ asset('build/js/controllers/project-note/projectNoteShow.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project-note/projectNoteList.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project-note/projectNoteNew.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project-note/projectNoteEdit.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project-note/projectNoteRemove.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project-note/projectNoteRemove.js') }}" charset="utf-8"></script>
+
 		<!--Services -->
 		<script src="{{ asset('build/js/services/client.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/services/projectNote.js') }}" charset="utf-8"></script>
 
 	@else
 		<script src="{{ elixir('js/all.js') }}" charset="utf-8"></script>
