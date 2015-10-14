@@ -1,6 +1,4 @@
-<?php
-
-namespace GlobProject\Entities;
+<?php namespace GlobProject\Entities;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -10,10 +8,17 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+/**
+ * Class User
+ * @package GlobProject\Entities
+ */
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
+    /**
+     *
+     */
     use Authenticatable, Authorizable, CanResetPassword;
 
     /**
@@ -37,6 +42,11 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    /**
+     * Projects of user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function projects() {
         return $this->belongsToMany(Project::class, 'project_members', 'member_id', 'project_id');
     }

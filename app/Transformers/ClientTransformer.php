@@ -13,6 +13,15 @@ class ClientTransformer extends TransformerAbstract
 {
 
     /**
+     * List of resources to automatically include
+     *
+     * @var array
+     */
+    protected $defaultIncludes = [
+        'projects',
+    ];
+
+    /**
      * Transform the \Client entity
      * @param \Client $model
      *
@@ -29,5 +38,14 @@ class ClientTransformer extends TransformerAbstract
             'address'    => $model->address,
             'obs'        => $model->obs,
         ];
+    }
+
+    /**
+     * @param Client $client
+     * @return \League\Fractal\Resource\Collection
+     */
+    public function includeProjects(Client $client)
+    {
+        return $this->collection($client->projects, new ProjectTransformer());
     }
 }
