@@ -11,7 +11,6 @@ use GlobProject\Entities\ProjectNote;
  */
 class ProjectNoteTransformer extends TransformerAbstract
 {
-
     /**
      * Transform the \ProjectNote entity
      * @param \ProjectNote $model

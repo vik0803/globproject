@@ -11,7 +11,6 @@ use GlobProject\Entities\ProjectFile;
  */
 class ProjectFileTransformer extends TransformerAbstract
 {
-
     /**
      * Transform the \ProjectFile entity
      * @param \ProjectFile $model
@@ -22,7 +21,7 @@ class ProjectFileTransformer extends TransformerAbstract
     {
         return [
             'fileId'        => (int)$model->id,
-            'name'          => $model->nome,
+            'name'          => $model->name,
             'description'   => $model->description,
             'extension'     => $model->extension,
         ];

@@ -5,7 +5,11 @@ use League\Fractal\TransformerAbstract;
 
 class ProjectOwnerTransformer extends TransformerAbstract
 {
-
+    /**
+     *
+     * @param User $owner
+     * @return array
+     */
     public function transform(User $owner)
     {
         return [

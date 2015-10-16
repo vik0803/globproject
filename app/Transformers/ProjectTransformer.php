@@ -12,11 +12,16 @@ class ProjectTransformer extends TransformerAbstract
      * @var array
      */
     protected $defaultIncludes = [
+        'files',
         'members',
         'owner',
         'client'
     ];
 
+    /**
+     * @param Project $project
+     * @return array
+     */
     public function transform(Project $project)
     {
         return [
@@ -31,16 +36,37 @@ class ProjectTransformer extends TransformerAbstract
         ];
     }
 
+    /**
+     * @param Project $project
+     * @return \League\Fractal\Resource\Collection
+     */
+    public function includeFiles(Project $project)
+    {
+        return $this->collection($project->files, new ProjectFileTransformer());
+    }
+
+    /**
+     * @param Project $project
+     * @return \League\Fractal\Resource\Collection
+     */
     public function includeMembers(Project $project)
     {
         return $this->collection($project->members, new ProjectMemberTransformer());
     }
 
+    /**
+     * @param Project $project
+     * @return \League\Fractal\Resource\Item
+     */
     public function includeOwner(Project $project)
     {
         return $this->item($project->owner, new ProjectOwnerTransformer());
     }
 
+    /**
+     * @param Project $project
+     * @return \League\Fractal\Resource\Item
+     */
     public function includeClient(Project $project)
     {
         return $this->item($project->client, new ProjectClientTransformer());
