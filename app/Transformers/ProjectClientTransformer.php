@@ -7,12 +7,16 @@ use League\Fractal\TransformerAbstract;
 class ProjectClientTransformer extends TransformerAbstract
 {
 
-    public function transform(Client $client)
+    public function transform(Client $model)
     {
         return [
-            'clientId'   => $client->id,
-            'name'       => $client->name,
-            'email'      => $client->email,
+            'clientId'   => (int) $model->id,
+            'name'       => $model->name,
+            'responsible'=> $model->responsible,
+            'email'      => $model->email,
+            'phone'      => $model->phone,
+            'address'    => $model->address,
+            'obs'        => $model->obs,
         ];
     }
 

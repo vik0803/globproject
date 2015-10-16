@@ -2,9 +2,9 @@
 
 namespace GlobProject\Repositories;
 
+use GlobProject\Presenters\ProjectNotePresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use GlobProject\Repositories\ProjectNoteRepository;
 use GlobProject\Entities\ProjectNote;
 
 /**
@@ -29,5 +29,13 @@ class ProjectNoteRepositoryEloquent extends BaseRepository implements ProjectNot
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function presenter()
+    {
+        return ProjectNotePresenter::class;
     }
 }

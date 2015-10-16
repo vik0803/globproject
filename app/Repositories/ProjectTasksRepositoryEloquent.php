@@ -2,6 +2,7 @@
 
 namespace GlobProject\Repositories;
 
+use GlobProject\Presenters\ProjectTasksPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use GlobProject\Repositories\ProjectTasksRepository;
@@ -29,5 +30,13 @@ class ProjectTasksRepositoryEloquent extends BaseRepository implements ProjectTa
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function presenter()
+    {
+        return ProjectTasksPresenter::class;
     }
 }
