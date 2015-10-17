@@ -3,11 +3,13 @@
 
 use Prettus\Validator\LaravelValidator;
 
-class ProjectNoteValidator extends LaravelValidator
+class ProjectFileValidator extends LaravelValidator
 {
     protected $rules = [
-        'project_id' => 'required|integer',
-        'title' => 'required',
-        'content' => 'required'
+        'project_id'    => 'required|integer',
+        'file'          => 'required',
+        'name'          => 'required',
+        'extension'     => 'required',
+        'description'   => ''
     ];
 }

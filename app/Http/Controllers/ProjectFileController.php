@@ -56,7 +56,7 @@ class ProjectFileController extends Controller
         $data['file'] = $file;
         $data['name'] = $request->name;
         $data['extension'] = $extension;
-        $data['projectId'] = $request->projectId;
+        $data['project_id'] = $request->projectId;
         $data['description'] = $request->description;
 
         $this->service->createFile($data);
@@ -78,36 +78,18 @@ class ProjectFileController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        if ($this->checkProjectPermissions($id) == false) {
-            return ['error' => 'Access Forbidden'];
-        }
-
-        return $this->service->update($request->all(), $id);
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $fileId)
     {
         if ($this->checkProjectPermissions($id) == false) {
             return ['error' => 'Access Forbidden'];
         }
 
-        if ($client = $this->repository->find($id)) {
-            $client->delete();
-        }
+        return $this->service->removeFile($id, $fileId);
     }
 
     /**
