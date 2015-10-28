@@ -1,21 +1,22 @@
 angular.module('app.controllers')
     .controller('ProjectNoteEditController', [
-        '$scope', '$location', '$routeParams','Client',
-        function($scope, $location, $routeParams, Client){
+        '$scope', '$location', '$routeParams','ProjectNote',
+        function($scope, $location, $routeParams, ProjectNote){
 
-        $scope.client = Client.get({
-            id: $routeParams.id
+        $scope.projectNote = ProjectNote.get({
+            id: $routeParams.id,
+            idNote: $routeParams.idNote
         });
 
         $scope.save = function(){
 
-            if ($scope.formClient.$valid) {
-                Client.update({
-                    id: $scope.client.id
+            if ($scope.formProjectNote.$valid) {
+                ProjectNote.update({
+                    idNote: $scope.projectNote.id
                 },
-                $scope.client,
+                $scope.projectNote,
                 function(){
-                    $location.path('/clients');
+                    $location.path('/projects');
                 });
             }
         }

@@ -37,7 +37,6 @@ class ProjectNoteController extends Controller
         $userId = \Authorizer::getResourceOwnerId();
         return $this->repository->findWhere([
             'project_id' => $id,
-            'owner_id' => $userId
         ]);
     }
 

@@ -22,8 +22,8 @@ class ProjectNoteTransformer extends TransformerAbstract
         return [
             'noteId'    => (int) $model->id,
             'projectId' => (int) $model->project_id,
-            'title'     => (int) $model->title,
-            'content'   => (int) $model->content,
+            'title'     => $model->title,
+            'content'   => $model->content,
         ];
     }
 }

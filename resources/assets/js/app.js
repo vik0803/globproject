@@ -59,6 +59,9 @@ app.config([
             }).when('/clients/:id/remove', {
                 templateUrl: 'build/views/client/remove.html',
                 controller: 'ClientRemoveController'
+            }).when('/projects', {
+                templateUrl: 'build/views/project/list.html',
+                controller: 'ProjectListController'
             }).when('/project/:id/notes', {
                 templateUrl: 'build/views/project-note/list.html',
                 controller: 'ProjectNoteListController'
@@ -74,6 +77,8 @@ app.config([
             }).when('/project/:id/notes/:idNote/remove', {
                 templateUrl: 'build/views/project-note/remove.html',
                 controller: 'ProjectNoteRemoveController'
+            }).otherwise({
+                redirectTo: '/home'
             });
 
         OAuthProvider.configure({
@@ -93,7 +98,16 @@ app.config([
     }]);
 
 app.run(['$rootScope', '$window', 'OAuth', function($rootScope, $window, OAuth) {
+
+    if (!OAuth.isAuthenticated()) {
+        return $window.location.href = '#/login';
+    }
+
+    console.log(OAuth);
+
     $rootScope.$on('oauth:error', function (event, rejection) {
+
+
         if ('invalid_grant' === rejection.data.error) {
             return;
         }
