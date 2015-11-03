@@ -3,22 +3,23 @@ angular.module('app.controllers')
         '$scope', '$location', '$routeParams','ProjectNote',
         function($scope, $location, $routeParams, ProjectNote){
 
-        $scope.projectNote = ProjectNote.get({
-            id: $routeParams.id,
-            idNote: $routeParams.idNote
-        });
+            $scope.projectNote = ProjectNote.get({
+                id: $routeParams.id,
+                idNote: $routeParams.idNote
+            });
 
-        $scope.save = function(){
+            $scope.save = function(){
 
-            if ($scope.formProjectNote.$valid) {
-                ProjectNote.update({
-                    idNote: $scope.projectNote.id
-                },
-                $scope.projectNote,
-                function(){
-                    $location.path('/projects');
-                });
+                if ($scope.formProjectNote.$valid) {
+                    ProjectNote.update({
+                        id: $scope.projectNote.project_id,
+                        idNote: $scope.projectNote.id,
+                    },
+                    $scope.projectNote,
+                    function(){
+                        $location.path('/project/'+$routeParams.id+'/notes');
+                    });
+                }
             }
         }
-
-    }]);
+    ]);

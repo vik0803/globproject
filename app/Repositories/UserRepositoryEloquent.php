@@ -5,14 +5,14 @@ namespace GlobProject\Repositories;
 use GlobProject\Presenters\UserPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use GlobProject\Repositories\UserRepositoryRepository;
-use GlobProject\Entities\UserRepository;
+use GlobProject\Repositories\UserRepository;
+use GlobProject\Entities\User;
 
 /**
  * Class UserRepositoryRepositoryEloquent
  * @package namespace GlobProject\Repositories;
  */
-class UserRepositoryRepositoryEloquent extends BaseRepository implements UserRepositoryRepository
+class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {
     /**
      * Specify Model class name
@@ -21,7 +21,7 @@ class UserRepositoryRepositoryEloquent extends BaseRepository implements UserRep
      */
     public function model()
     {
-        return UserRepository::class;
+        return User::class;
     }
 
     /**

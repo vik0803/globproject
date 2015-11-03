@@ -84,6 +84,7 @@
 		<script src="{{ asset('build/js/controllers/project-note/projectNoteRemove.js') }}" charset="utf-8"></script>
 
 		<!--Services -->
+		<script src="{{ asset('build/js/services/user.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/services/client.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/services/project.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/services/projectNote.js') }}" charset="utf-8"></script>

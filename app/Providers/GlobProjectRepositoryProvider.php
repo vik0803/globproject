@@ -23,6 +23,12 @@ class GlobProjectRepositoryProvider extends ServiceProvider
      */
     public function register()
     {
+        // User
+        $this->app->bind(
+            \GlobProject\Repositories\UserRepository::class,
+            \GlobProject\Repositories\UserRepositoryEloquent::class
+        );
+
         // Client
         $this->app->bind(
             \GlobProject\Repositories\ClientRepository::class,

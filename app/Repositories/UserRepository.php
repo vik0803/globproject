@@ -8,7 +8,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  * Interface UserRepositoryRepository
  * @package namespace GlobProject\Repositories;
  */
-interface UserRepositoryRepository extends RepositoryInterface
+interface UserRepository extends RepositoryInterface
 {
     //
 }

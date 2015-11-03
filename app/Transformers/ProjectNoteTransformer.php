@@ -20,10 +20,10 @@ class ProjectNoteTransformer extends TransformerAbstract
     public function transform(ProjectNote $model)
     {
         return [
-            'noteId'    => (int) $model->id,
-            'projectId' => (int) $model->project_id,
-            'title'     => $model->title,
-            'content'   => $model->content,
+            'id'            => (int) $model->id,
+            'project_id'    => (int) $model->project_id,
+            'title'         => $model->title,
+            'content'       => $model->content,
         ];
     }
 }
