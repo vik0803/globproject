@@ -1,4 +1,9 @@
-var app = angular.module('app', ['ngRoute', 'angular-oauth2','app.controllers', 'app.services']);
+var app = angular.module('app', [
+    'ngRoute',
+    'angular-oauth2',
+    'app.controllers',
+    'app.services'
+]);
 
 angular.module('app.controllers', ['ngMessages', 'angular-oauth2']);
 angular.module('app.services', ['ngResource']);
@@ -62,19 +67,19 @@ app.config([
             }).when('/projects', {
                 templateUrl: 'build/views/project/list.html',
                 controller: 'ProjectListController'
-            }).when('/project/:id/notes', {
+            }).when('/projects/:id/notes', {
                 templateUrl: 'build/views/project-note/list.html',
                 controller: 'ProjectNoteListController'
-            }).when('/project/:id/notes/:idNote/show', {
+            }).when('/projects/:id/notes/:idNote/show', {
                 templateUrl: 'build/views/project-note/show.html',
                 controller: 'ProjectNoteShowController'
-            }).when('/project/:id/notes/new', {
+            }).when('/projects/:id/notes/new', {
                 templateUrl: 'build/views/project-note/new.html',
                 controller: 'ProjectNoteNewController'
-            }).when('/project/:id/notes/:idNote/edit', {
+            }).when('/projects/:id/notes/:idNote/edit', {
                 templateUrl: 'build/views/project-note/edit.html',
                 controller: 'ProjectNoteEditController'
-            }).when('/project/:id/notes/:idNote/remove', {
+            }).when('/projects/:id/notes/:idNote/remove', {
                 templateUrl: 'build/views/project-note/remove.html',
                 controller: 'ProjectNoteRemoveController'
             }).otherwise({

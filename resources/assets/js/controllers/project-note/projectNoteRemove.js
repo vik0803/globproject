@@ -14,7 +14,7 @@ angular.module('app.controllers')
                 idNote: $scope.projectNote.id
             }).then(function(){
                 console.log("--- Remover");
-                $location.path('/project/'+$routeParams.id+'/notes');
+                $location.path('/projects/'+$routeParams.id+'/notes');
             });
         }
 

@@ -17,7 +17,7 @@ angular.module('app.controllers')
                     },
                     $scope.projectNote,
                     function(){
-                        $location.path('/project/'+$routeParams.id+'/notes');
+                        $location.path('/projects/'+$routeParams.id+'/notes');
                     });
                 }
             }
