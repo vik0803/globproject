@@ -20,6 +20,8 @@ config.buildVendorPathJs = config.buildPathJs + '/vendor';
 config.vendorPathJs = [
     config.bowerPath + '/jquery/dist/jquery.min.js',
     config.bowerPath + '/bootstrap/dist/js/bootstrap.min.js',
+    config.bowerPath + '/bootstrap-material-design/dist/js/material.min.js',
+    config.bowerPath + '/bootstrap-material-design/dist/js/ripples.min.js',
     config.bowerPath + '/angular/angular.min.js',
     config.bowerPath + '/angular-route/angular-route.min.js',
     config.bowerPath + '/angular-resource/angular-resource.min.js',
@@ -39,6 +41,9 @@ config.buildVendorPathCss = config.buildPathCss + '/vendor';
 config.vendorPathCss = [
     config.bowerPath + '/bootstrap/dist/css/bootstrap.min.css',
     config.bowerPath + '/bootstrap/dist/css/bootstrap-theme.min.css',
+    config.bowerPath + '/bootstrap-material-design/dist/css/material.min.css',
+    config.bowerPath + '/bootstrap-material-design/dist/css/ripples.min.css',
+    config.bowerPath + '/bootstrap-material-design/dist/css/roboto.min.css',
 ];
 
 // Config das Path CSS
