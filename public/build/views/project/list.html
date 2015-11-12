@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Listagem de projects</div>
+                <div class="panel-body">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Progress</th>
+                                <th>Status</th>
+                                <th>Aggregates</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="o in projects">
+                                <td>{{ o.projectId }} - {{ o.name}}</td>
+                                <td>{{ o.description}}</td>
+                                <td>{{ o.progress}}</td>
+                                <td>{{ o.status}}</td>
+                                <td>
+                                    <a ng-href="#/project/{{ o.projectId }}/notes"class="btn btn-sm btn-primary">Notas</a>
+                                </td>
+                                <td>
+                                    <a ng-href="#"class="btn btn-sm btn-primary">Editar</a>
+                                    <a ng-href="#"class="btn btn-sm btn-danger">Excluir</a>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
