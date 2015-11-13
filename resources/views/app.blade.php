@@ -75,6 +75,9 @@
 		<script src="{{ asset('build/js/controllers/client/clientRemove.js') }}" charset="utf-8"></script>
 
 		<script src="{{ asset('build/js/controllers/project/projectList.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project/projectNew.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project/projectEdit.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project/projectRemove.js') }}" charset="utf-8"></script>
 
 		<script src="{{ asset('build/js/controllers/project-note/projectNoteShow.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/controllers/project-note/projectNoteList.js') }}" charset="utf-8"></script>

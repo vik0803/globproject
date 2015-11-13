@@ -1,9 +1,12 @@
 angular.module('app.controllers').controller('ProjectEditController', [
-    '$scope', '$location', '$routeParams','Project',
-    function($scope, $location, $routeParams, Project){
+    '$scope', '$location', '$routeParams','Project', 'Client',
+    function($scope, $location, $routeParams, Project, Client){
+
         $scope.project = Project.get({
             id: $routeParams.id
         });
+
+        $scope.clients = Client.query();
 
         $scope.save = function(){
 
