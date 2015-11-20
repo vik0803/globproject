@@ -1,6 +1,8 @@
 angular.module('app.controllers').controller('ProjectEditController', [
-    '$scope', '$location', '$routeParams','Project', 'Client',
-    function($scope, $location, $routeParams, Project, Client){
+    '$scope', '$location', '$routeParams','Project', 'Client', 'User',
+    function($scope, $location, $routeParams, Project, Client, User){
+
+        $scope.clientOptions = [];
 
         $scope.project = Project.get({
             id: $routeParams.id

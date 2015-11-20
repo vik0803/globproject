@@ -7,25 +7,13 @@
 
                     <form class="form-horizontal"name="formProject" role="form" method="POST" ng-submit="save()">
 
-                        <div class="form-group" ng-class="{'has-error': !formProject.ownerID.$valid && formProject.ownerId.$touched}">
-                            <label class="col-md-4 control-label">Onwer</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="ownerId" ng-model="project.ownerId" required />
-                                <div ng-messages="formProject.ownerId.$error" class="help-block" ng-show="formProject.ownerId.$touched">
-                                    <div ng-message="required">Campo obrigatório</div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group" ng-class="{'has-error': !formProject.clienteId.$valid && formProject.clienteId.$touched}">
                             <label class="col-md-4 control-label">Client</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="clienteId" ng-model="project.clienteId" required />
+                                <select ng-model="project.clienteId" class="form-control" name="clienteId" ng-options="item.name for item in clients track by item.id" required></select>
                                 <div ng-messages="formProject.clienteId.$error" class="help-block" ng-show="formProject.clienteId.$touched">
                                     <div ng-message="required">Campo obrigatório</div>
                                 </div>
-                                <select ng-model="project.clienteId" ng-options="item.name for item in clients">
-                                </select>
                             </div>
                         </div>
 
