@@ -73,6 +73,7 @@ class ProjectController extends Controller
         if ($this->checkProjectPermissions($id) == false) {
             return ['error' => 'Access Forbidden'];
         }
+
         return $this->repository->find($id);
     }
 
@@ -135,7 +136,10 @@ class ProjectController extends Controller
      */
     private function checkProjectPermissions($projectId)
     {
-        if ($this->checkProjectOwner($projectId) or $this->checkProjecMember($projectId)) {
+        $validateUser = $this->checkProjectOwner($projectId);
+        $validateProject =$this->checkProjecMember($projectId);
+
+        if ($validateUser OR $validateProject) {
             return true;
         }
         return false;
