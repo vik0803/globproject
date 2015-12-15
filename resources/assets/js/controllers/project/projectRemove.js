@@ -7,7 +7,9 @@ angular.module('app.controllers').controller('ProjectRemoveController', [
         });
 
         $scope.remove = function(){
-            $scope.project.$delete().then(function(){
+            $scope.project.$delete({
+                id: $scope.project.id
+            }).then(function(){
                 $location.path('/projects');
             });
         }

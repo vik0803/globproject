@@ -7,6 +7,9 @@ angular.module('app.services')
             update: {
                 method: "PUT"
             },
+            save: {
+                method: "POST"
+            },
             get: {
                 method: "GET",
                 transformResponse: function(data, headers) {
