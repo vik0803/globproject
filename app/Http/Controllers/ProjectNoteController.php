@@ -34,7 +34,6 @@ class ProjectNoteController extends Controller
      */
     public function index($id)
     {
-        $userId = \Authorizer::getResourceOwnerId();
         return $this->repository->findWhere([
             'project_id' => $id,
         ]);

@@ -92,6 +92,9 @@
 		<script src="{{ asset('build/js/services/project.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/services/projectNote.js') }}" charset="utf-8"></script>
 
+		<!--Filter -->
+		<script src="{{ asset('build/js/filters/dateBr.js') }}" charset="utf-8"></script>
+
 	@else
 		<script src="{{ elixir('js/all.js') }}" charset="utf-8"></script>
 	@endif

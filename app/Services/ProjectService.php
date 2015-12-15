@@ -78,6 +78,7 @@ class ProjectService
     public function update(array $data, $id)
     {
         try {
+
             $this->validator->with($data)->passesOrFail();
 
             return $this->repository->update($data, $id);

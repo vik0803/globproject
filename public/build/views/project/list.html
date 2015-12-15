@@ -9,9 +9,10 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
+                                <th>Client</th>
                                 <th>Progress</th>
                                 <th>Status</th>
+                                <th>Date</th>
                                 <th>Aggregates</th>
                                 <th>Action</th>
                             </tr>
@@ -19,16 +20,17 @@
 
                         <tbody>
                             <tr ng-repeat="o in projects">
-                                <td>{{ o.projectId }} - {{ o.name}}</td>
-                                <td>{{ o.description}}</td>
-                                <td>{{ o.progress}}</td>
-                                <td>{{ o.status}}</td>
+                                <td>{{ o.project_id }} - {{ o.name }}</td>
+                                <td>{{ o.client.data.name }}</td>
+                                <td>{{ o.progress }}</td>
+                                <td>{{ o.status }}</td>
+                                <td>{{ o.due_date | dateBr }}</td>
                                 <td>
-                                    <a ng-href="#/projects/{{ o.projectId }}/notes"class="btn btn-sm btn-primary">Notas</a>
+                                    <a ng-href="#/projects/{{ o.project_id }}/notes"class="btn btn-sm btn-primary">Notas</a>
                                 </td>
                                 <td>
-                                    <a ng-href="#/projects/{{o.projectId}}/edit"class="btn btn-sm btn-primary">Editar</a>
-                                    <a ng-href="#/projects/{{o.projectId}}/remove"class="btn btn-sm btn-danger">Excluir</a>
+                                    <a ng-href="#/projects/{{o.project_id}}/edit"class="btn btn-sm btn-primary">Editar</a>
+                                    <a ng-href="#/projects/{{o.project_id}}/remove"class="btn btn-sm btn-danger">Excluir</a>
                                 </td>
                             </tr>
                         </tbody>
