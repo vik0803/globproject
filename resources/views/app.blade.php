@@ -61,6 +61,7 @@
 		<script src="{{ asset('build/js/vendor/angular-cookies.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/angular-oauth2.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/ui-bootstrap.min.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/vendor/ui-bootstrap-tpls.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/navbar.min.js') }}" charset="utf-8"></script>
 
 

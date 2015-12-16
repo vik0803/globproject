@@ -3,7 +3,9 @@ var app = angular.module('app', [
     'angular-oauth2',
     'app.controllers',
     'app.services',
-    'app.filters'
+    'app.filters',
+    'ui.bootstrap.typeahead',
+    'ui.bootstrap.tpls'
 ]);
 
 angular.module('app.controllers', ['ngMessages', 'angular-oauth2']);

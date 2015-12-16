@@ -2,11 +2,15 @@ angular.module('app.controllers').controller('ProjectEditController', [
     '$scope', '$location', '$cookies', '$routeParams','Project', 'Client', 'User', 'appConfig',
     function($scope, $location, $cookies, $routeParams, Project, Client, User, appConfig){
 
-        $scope.project = Project.get({
+        Project.get({
             id: $routeParams.id
+        }, function(data){
+            $scope.project = data;
+            Client.get({id: data.client_id}, function(data){
+                $scope.clientSelected = data;
+            })
         });
 
-        $scope.clients = Client.query();
         $scope.status = appConfig.project.status;
 
         $scope.save = function(){
@@ -31,6 +35,39 @@ angular.module('app.controllers').controller('ProjectEditController', [
                 console.log("-     Não válido o formulário   -");
                 console.log("---------------------------------");
             }
-        }
+        };
+
+        /**
+         *
+         * @param id
+         * @returns {*}
+         */
+        $scope.formatName = function(model){
+            if (model) {
+                return model.name;
+            }
+            return '';
+        };
+
+
+        /**
+         *
+         * @param name
+         * @returns {*}
+         */
+        $scope.getClients = function(name) {
+            return Client.query({
+                search: name,
+                searchFields: 'name:like'
+            }).$promise;
+        };
+
+        /**
+         *
+         * @param item
+         */
+        $scope.selectClient = function(item){
+            $scope.project.client_id = item.id;
+        };
     }
 ]);

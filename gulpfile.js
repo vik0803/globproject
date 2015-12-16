@@ -28,6 +28,7 @@ config.vendorPathJs = [
     config.bowerPath + '/angular-animate/angular-animate.min.js',
     config.bowerPath + '/angular-messages/angular-messages.min.js',
     config.bowerPath + '/angular-bootstrap/ui-bootstrap.min.js',
+    config.bowerPath + '/angular-bootstrap/ui-bootstrap-tpls.min.js',
     config.bowerPath + '/angular-strap/dist/modules/navbar.min.js',
     config.bowerPath + '/angular-cookies/angular-cookies.min.js',
     config.bowerPath + '/query-string/query-string.js',
