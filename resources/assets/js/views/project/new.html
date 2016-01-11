@@ -11,11 +11,15 @@
                             <label class="col-md-4 control-label">Client</label>
                             <div class="col-md-6">
                                 <input type="text" name="client_id" class="form-control"
-                                       ng-model="project.client_id"
-                                       typeahead="item.id as item.name for item in getClients($viewValue)|limitTo:10"
-                                       typeahead-input-formatter="formatName($model)" />
+                                       ng-model="clientSelected"
+                                       typeahead="item as item.name for item in getClients($viewValue)|limitTo:10"
+                                       typeahead-input-formatter="formatName($model)"
+                                       typeahead-on-select="selectClient($item)"
+                                       typeahead-editable="false"
+                                       required/>
                                 <div ng-messages="formProject.client_id.$error" class="help-block" ng-show="formProject.client_id.$touched">
                                     <div ng-message="required">Campo obrigatório</div>
+                                    <div ng-message="editable">Selecione um cliente válido</div>
                                 </div>
                             </div>
                         </div>

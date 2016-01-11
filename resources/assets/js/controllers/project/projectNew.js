@@ -3,8 +3,6 @@ angular.module('app.controllers').controller('ProjectNewController', [
     function($scope, $location, $cookies, Project, Client, appConfig){
 
         $scope.project = new Project();
-
-        $scope.clients = Client.query();
         $scope.status = appConfig.project.status;
 
         /**
@@ -25,17 +23,12 @@ angular.module('app.controllers').controller('ProjectNewController', [
          * @param id
          * @returns {*}
          */
-        $scope.formatName = function(id){
-            if (id) {
-                for(var o in $scope.clients) {
-                    if ($scope.clients[o].id == id) {
-                        return $scope.clients[o].name;
-                    }
-                }
+        $scope.formatName = function(model){
+            if (model) {
+                return model.name;
             }
             return '';
         };
-
 
         /**
          *
@@ -47,6 +40,14 @@ angular.module('app.controllers').controller('ProjectNewController', [
                 search: name,
                 searchFields: 'name:like'
             }).$promise;
+        };
+
+        /**
+         *
+         * @param item
+         */
+        $scope.selectClient = function(item){
+            $scope.project.client_id = item.id;
         };
     }
 ]);
