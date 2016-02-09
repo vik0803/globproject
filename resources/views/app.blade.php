@@ -63,6 +63,7 @@
 		<script src="{{ asset('build/js/vendor/ui-bootstrap.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/ui-bootstrap-tpls.min.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/vendor/navbar.min.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/vendor/ng-file-upload.min.js') }}" charset="utf-8"></script>
 
 
 		<script src="{{ asset('build/js/app.js') }}" charset="utf-8"></script>
@@ -85,9 +86,15 @@
 		<script src="{{ asset('build/js/controllers/project-note/projectNoteNew.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/controllers/project-note/projectNoteEdit.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/controllers/project-note/projectNoteRemove.js') }}" charset="utf-8"></script>
-		<script src="{{ asset('build/js/controllers/project-note/projectNoteRemove.js') }}" charset="utf-8"></script>
+
+
+		<script src="{{ asset('build/js/controllers/project-file/projectFileList.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project-file/projectFileNew.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project-file/projectFileEdit.js') }}" charset="utf-8"></script>
+		<script src="{{ asset('build/js/controllers/project-file/projectFileRemove.js') }}" charset="utf-8"></script>
 
 		<!--Services -->
+		<script src="{{ asset('build/js/services/urls.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/services/user.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/services/client.js') }}" charset="utf-8"></script>
 		<script src="{{ asset('build/js/services/project.js') }}" charset="utf-8"></script>

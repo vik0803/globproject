@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Cadastrar novo arquivo de projeto</div>
+                <div class="panel-body">
+
+                    <form class="form-horizontal"name="formProjectFile" role="form" method="POST" ng-submit="save()">
+
+                        <div class="form-group" ng-class="{'has-error': !formProjectFile.name.$valid && formProjectFile.name.$touched}">
+                            <label class="col-md-4 control-label">Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="name" ng-model="projectFile.name" required />
+                                <div ng-messages="formProjectFile.name.$error" class="help-block" ng-show="formProjectFile.name.$touched">
+                                    <div ng-message="required">Campo obrigatório</div>
+                                </div>
+                            </div>in
+                        </div>
+
+
+                        <div class="form-group" ng-class="{'has-error': !formProjectFile.description.$valid && formProjectFile.description.$touched}">
+                            <label class="col-md-4 control-label">Description</label>
+                            <div class="col-md-6">
+                                <textarea class="form-control" name="description" ng-model="projectFile.description" required></textarea>
+                                <div ng-messages="formProjectFile.description.$error" class="help-block" ng-show="formProjectFile.description.$touched">
+                                    <div ng-message="required">Campo obrigatório</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': !formProjectFile.file.$valid && formProjectFile.file.$touched}">
+                            <label class="col-md-4 control-label">File</label>
+                            <div class="col-md-6">
+
+                                <div class="btn btn-info button" ngf-select ng-model="projectFile.file" name="file">Selecionar</div>
+
+                                <div ng-messages="formProjectFile.file.$error" class="help-block" ng-show="formProjectFile.file.$touched">
+                                    <div ng-message="required">Campo obrigatório</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -45,7 +45,7 @@ class ProjectController extends Controller
      */
     public function members($id)
     {
-        if ($this->checkProjectPermissions($id) == false) {
+        if ($this->service->checkProjectPermissions($id) == false) {
             return ['error' => 'Access Forbidden'];
         }
         return $this->repository->skipPresenter()->find($id)->members;
@@ -70,11 +70,10 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        if ($this->checkProjectPermissions($id) == false) {
+        if ($this->service->checkProjectPermissions($id) == false) {
             return ['error' => 'Access Forbidden'];
         }
-
-        return $this->repository->find($id);
+        return $this->repository->skipPresenter(false)->find($id);
     }
 
     /**
@@ -86,7 +85,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($this->checkProjectPermissions($id) == false) {
+        if ($this->service->checkProjectPermissions($id) == false) {
             return ['error' => 'Access Forbidden'];
         }
 
@@ -101,47 +100,12 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->checkProjectPermissions($id) == false) {
+        if ($this->service->checkProjectPermissions($id) == false) {
             return ['error' => 'Access Forbidden'];
         }
 
         if ($client = $this->repository->find($id)) {
             $client->delete();
         }
-    }
-
-    /**
-     * @param $projectId
-     * @return array
-     */
-    private function checkProjectOwner($projectId)
-    {
-        $userId = \Authorizer::getResourceOwnerId();
-        return $this->repository->isOwner($projectId, $userId);
-    }
-
-    /**
-     * @param $projectId
-     * @return mixed
-     */
-    private function checkProjecMember($projectId)
-    {
-        $userId = \Authorizer::getResourceOwnerId();
-        return $this->repository->hasMember($projectId, $userId);
-    }
-
-    /**
-     * @param $projectId
-     * @return bool
-     */
-    private function checkProjectPermissions($projectId)
-    {
-        $validateUser = $this->checkProjectOwner($projectId);
-        $validateProject =$this->checkProjecMember($projectId);
-
-        if ($validateUser OR $validateProject) {
-            return true;
-        }
-        return false;
     }
 }

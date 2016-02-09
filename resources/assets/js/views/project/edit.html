@@ -5,7 +5,7 @@
                 <div class="panel-heading">Edição de projeto</div>
                 <div class="panel-body">
 
-                    <form class="form-horizontal"name="formProject" role="form" method="POST" ng-submit="save()">
+                    <form class="form-horizontal" name="formProject" role="form" method="POST" ng-submit="save()">
 
                         <div class="form-group" ng-class="{'has-error': !formProject.client_id.$valid && formProject.client_id.$touched}">
                             <label class="col-md-4 control-label">Client</label>
@@ -44,9 +44,19 @@
                         <div class="form-group" ng-class="{'has-error': !formProject.due_date.$valid && formProject.due_date.$touched}">
                             <label class="col-md-4 control-label">Due Date</label>
                             <div class="col-md-6">
-                                <input type="date" class="form-control" name="due_date" ng-model="project.due_date" required/>
+                                <p class="input-group">
+                                    <input type="text" name="due_date" class="form-control"
+                                           datepicker-popup="dd/MM/yyyy"
+                                           ng-model="project.due_date"
+                                           is-open="due_date.status.opened" close-text="Fechar"
+                                           required />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
                                 <div ng-messages="formProject.due_date.$error" class="help-block" ng-show="formProject.due_date.$touched">
                                     <div ng-message="required">Campo obrigatório</div>
+                                    <div ng-message="date">Data invalída</div>
                                 </div>
                             </div>
                         </div>

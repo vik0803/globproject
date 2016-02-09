@@ -12,10 +12,10 @@ class ProjectTransformer extends TransformerAbstract
      * @var array
      */
     protected $defaultIncludes = [
+        'client',
         'files',
         'members',
-        'owner',
-        'client'
+        'owner'
     ];
 
     /**
@@ -30,7 +30,7 @@ class ProjectTransformer extends TransformerAbstract
             'owner_id'     => $project->owner_id,
             'name'        => $project->name,
             'description' => $project->description,
-            'progress'    => $project->progress,
+            'progress'    => (float)$project->progress,
             'status'      => $project->status,
             'due_date'     => $project->due_date,
         ];

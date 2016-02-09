@@ -3,15 +3,9 @@
 
 use GlobProject\Entities\ProjectMember;
 use GlobProject\Repositories\ProjectRepository;
-use GlobProject\Validators\ProjectFileValidator;
 use GlobProject\Validators\ProjectValidator;
-use Illuminate\Contracts\Validation\ValidationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Validator\Exceptions\ValidatorException;
-
-use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 
 class ProjectService
 {
@@ -24,32 +18,14 @@ class ProjectService
      * @var ProjectValidator
      */
     private $validator;
-    /**
-     * @var ProjectFileValidator
-     */
-    private $validatorFile;
-    /**
-     * @var Filesystem
-     */
-    private $filesystem;
-    /**
-     * @var Storage
-     */
-    private $storage;
 
     /**
      * @param ProjectRepository $repository
      * @param ProjectValidator $validator
-     * @param ProjectFileValidator $validatorFile
-     * @param Filesystem $filesystem
-     * @param Storage $storage
      */
-    public function __construct(ProjectRepository $repository, ProjectValidator $validator, ProjectFileValidator $validatorFile, Filesystem $filesystem, Storage $storage) {
+    public function __construct(ProjectRepository $repository, ProjectValidator $validator) {
         $this->repository = $repository;
         $this->validator = $validator;
-        $this->filesystem = $filesystem;
-        $this->storage = $storage;
-        $this->validatorFile = $validatorFile;
     }
 
     /**
@@ -143,78 +119,38 @@ class ProjectService
     }
 
     /**
-     * @param array $data
+     * @param $projectId
      * @return array
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function createFile(array $data)
+    public function checkProjectOwner($projectId)
     {
-
-        try {
-            // Verify datas of file
-            $this->validatorFile->with($data)->passesOrFail();
-
-            // Get project skip presenter for jobs
-            $project = $this->repository->skipPresenter()->find($data['project_id']);
-
-            // Create register of file on bd
-            $projectFile = $project->files()->create($data);
-
-            // Save file on filesystem
-            $this->storage->put($projectFile->id.".".$data['extension'], $this->filesystem->get($data['file']));
-
-            return $projectFile;
-
-        } catch(ValidatorException $e) {
-            return [
-                'error' => true,
-                'message' => $e->getMessageBag()
-            ];
-        }
+        $userId = \Authorizer::getResourceOwnerId();
+        return $this->repository->isOwner($projectId, $userId);
     }
 
     /**
      * @param $projectId
-     * @param $fileId
-     * @return array
+     * @return mixed
      */
-    public function removeFile($projectId, $fileId)
+    public function checkProjecMember($projectId)
     {
+        $userId = \Authorizer::getResourceOwnerId();
+        return $this->repository->hasMember($projectId, $userId);
+    }
 
-        try {
+    /**
+     * @param $projectId
+     * @return bool
+     */
+    public function checkProjectPermissions($projectId)
+    {
+        $validateUser = $this->checkProjectOwner($projectId);
+        $validateProject =$this->checkProjecMember($projectId);
 
-            // Get project skip presenter for jobs
-            $project = $this->repository->skipPresenter()->find($projectId);
-
-            // Create register of file on bd
-            $projectFile = $project->files()->findOrFail($fileId);
-
-            // Delete filesystem on files
-            $this->storage->delete($projectFile->id.".".$projectFile->extension);
-
-            // Delete file register on bd
-            return [
-                'success' => true,
-                'message' => $projectFile->delete()
-            ];
-
-        } catch (ValidationException $e) {
-            return [
-                'error' => true,
-                'message' => $e->getMessageBag()
-            ];
-        } catch (ModelNotFoundException $e) {
-            return [
-                'error' => true,
-                'message' => $e->getCode()
-            ];
-        } catch (FileNotFoundException $e) {
-            return [
-                'error' => true,
-                'message' => $e->getMessage()
-            ];
+        if ($validateUser OR $validateProject) {
+            return true;
         }
-
+        return false;
     }
 
 }

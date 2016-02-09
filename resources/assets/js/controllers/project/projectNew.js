@@ -5,6 +5,17 @@ angular.module('app.controllers').controller('ProjectNewController', [
         $scope.project = new Project();
         $scope.status = appConfig.project.status;
 
+        $scope.due_date = {
+            status: {
+                opened: false
+            }
+        };
+
+        $scope.open = function($event){
+            console.log('aaa');
+            $scope.due_date.status.opened = true;
+        };
+
         /**
          *
          */

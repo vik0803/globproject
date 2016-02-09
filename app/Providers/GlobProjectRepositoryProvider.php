@@ -47,6 +47,12 @@ class GlobProjectRepositoryProvider extends ServiceProvider
             \GlobProject\Repositories\ProjectNoteRepositoryEloquent::class
         );
 
+        // Project File
+        $this->app->bind(
+            \GlobProject\Repositories\ProjectFileRepository::class,
+            \GlobProject\Repositories\ProjectFileRepositoryEloquent::class
+        );
+
         // Project Tasks
         $this->app->bind(
             \GlobProject\Repositories\ProjectTasksRepository::class,

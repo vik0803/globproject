@@ -11,6 +11,16 @@ angular.module('app.controllers').controller('ProjectEditController', [
 
         $scope.status = appConfig.project.status;
 
+        $scope.due_date = {
+            status: {
+                opened: false
+            }
+        };
+
+        $scope.open = function($event){
+            $scope.due_date.status.opened = true;
+        };
+
         $scope.save = function(){
 
             if ($scope.formProject.$valid)
@@ -18,6 +28,7 @@ angular.module('app.controllers').controller('ProjectEditController', [
                 console.log("---------------------------------");
                 console.log("-     Válido o formulário       -");
                 console.log("---------------------------------");
+                console.log($scope.project.id);
                 $scope.project.owner_id = $cookies.getObject('user').id;
                 Project.update({
                         id: $scope.project.id

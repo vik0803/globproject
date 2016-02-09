@@ -22,7 +22,6 @@ Route::post('oauth/access_token', function() {
 
 Route::group(['middleware' => 'oauth'], function(){
 
-
     // Client
     Route::resource('client', 'ClientController', ['except' => ['create', 'edit']]);
 
@@ -40,12 +39,15 @@ Route::group(['middleware' => 'oauth'], function(){
         Route::delete('note/{id}', 'ProjectNoteController@destroy');
 
         // Files
+        Route::get('{id}/file', 'ProjectFileController@index');
+        Route::get('file/{fileId}', 'ProjectFileController@show');
+        Route::get('file/{fileId}/download', 'ProjectFileController@showFile');
         Route::post('{id}/file', 'ProjectFileController@store');
-        Route::delete('{id}/file/{fileId}', 'ProjectFileController@destroy');
+        Route::put('{id}/file', 'ProjectFileController@update');
+        Route::delete('{id}/file', 'ProjectFileController@destroy');
 
         // Members
         Route::get('{id}/members', 'ProjectController@members');
-
 
         // Tasks
         Route::get('{id}/task', 'ProjectTasksController@index');

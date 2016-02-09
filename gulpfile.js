@@ -33,6 +33,7 @@ config.vendorPathJs = [
     config.bowerPath + '/angular-cookies/angular-cookies.min.js',
     config.bowerPath + '/query-string/query-string.js',
     config.bowerPath + '/angular-oauth2/dist/angular-oauth2.min.js',
+    config.bowerPath + '/ng-file-upload/ng-file-upload.min.js',
 ];
 
 // Config das Path CSS
